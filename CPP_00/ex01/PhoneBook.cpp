@@ -1,11 +1,11 @@
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() {
-	std::cout << "PhoneBook constructor called" << std::endl;
+	std::cout << "Welcome to your awesome PhoneBook!" << std::endl;
 }
 
 PhoneBook::~PhoneBook() {
-	std::cout << "PhoneBook destructor called" << std::endl;
+	std::cout << '\r' << "BYE! HAVE A BEAUTIFUL TIME!" << std::endl;
 }
 
 void	PhoneBook::addContact() {
@@ -20,10 +20,19 @@ void	PhoneBook::addContact() {
 	contact[i].addNickname();
 	contact[i].addDarkSecret();
 	contact[i].setFilled(true);
+	std::cout << "Done!" << std::endl;
 }
 
 void	PhoneBook::search() {
+	std::string	input;
+
+	if (contact[0].getFilled() == false)
+		return (void)(std::cout << "You have no contacts" << std::endl);
 	printContacts();
+	std::cout << "Enter contact index: ";
+	std::getline(std::cin, input);
+	if (contact[atoi(input.c_str()) - 1].getFilled() == true)
+		std::cout << "Contact exists" << std::endl;
 }
 
 void	PhoneBook::printContacts() {
@@ -33,7 +42,18 @@ void	PhoneBook::printContacts() {
 		<< std::setw(10) << std::right << "Nickname" << std::endl;
 	int	i = 0;
 	while (i < 8 && contact[i].getFilled() == true) {
-		std::cout << std::setw(10) << std::right << (i + 1) << " | ";
+		std::cout << std::setw(10) << std::right << (i + 1) << " | "
+			<< std::setw(10) << std::right << checkWord(contact[i].getFirstName()) << " | "
+			<< std::setw(10) << std::right << checkWord(contact[i].getLastName()) << " | "
+			<< std::setw(10) << std::right << checkWord(contact[i].getNickname()) << std::endl;
 		i++;
 	}
 }
+
+std::string PhoneBook::checkWord(std::string str) {
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
+}
+
+

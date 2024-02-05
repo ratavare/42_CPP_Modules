@@ -23,7 +23,7 @@ public:
 	void		addNickname();
 	void		addDarkSecret();
 	void		setFilled(bool);
-	std::string	getFistName();
+	std::string	getFirstName();
 	std::string	getLastName();
 	std::string	getNickname();
 };

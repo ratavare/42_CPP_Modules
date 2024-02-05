@@ -3,6 +3,8 @@
 
 # include "Contact.hpp"
 # include <iomanip>
+# include <string>
+# include <stdlib.h>
 
 class PhoneBook
 {
@@ -14,6 +16,7 @@ public:
 	void	addContact();
 	void	search();
 	void	printContacts();
+	std::string	checkWord(std::string str);
 };
 
 #endif
