@@ -10,13 +10,13 @@ class PhoneBook
 {
 private:
 	Contact contact[8];
+	std::string	checkWord(std::string str);
+	void	printContacts();
 public:
 	PhoneBook();
 	~PhoneBook();
 	void	addContact();
 	void	search();
-	void	printContacts();
-	std::string	checkWord(std::string str);
 };
 
 #endif
