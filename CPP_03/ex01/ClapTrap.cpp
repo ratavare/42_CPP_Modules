@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap() {
 	std::cout << "ClapTrap default constructor called" << std::endl;
-	this->name = "Default";
+	this->name = "Clappie";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->atackDamage = 0;
@@ -50,10 +50,10 @@ void ClapTrap::attack(const std::string& target) {
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->hitPoints == 0) {
-		std::cout << "ClapTrap " << this->name << " already fainted." << std::endl;
+		std::cout << this->name << " already fainted." << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->name << " took " << amount << " points of damage";
+	std::cout << this->name << " took " << amount << " points of damage";
 	this->hitPoints -= amount;
 	if (this->hitPoints <= 0) {
 		std::cout << " and died!" << std::endl;
@@ -65,14 +65,14 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (this->energyPoints == 0) {
-		std::cout << "ClapTrap " << this->name << " has no energy points." << std::endl;
+		std::cout << this->name << " has no energy points." << std::endl;
 		return ;
 	}
 	else if (this->hitPoints == 0) {
-		std::cout << "ClapTrap " << this->name << " already fainted and can't be repaired." << std::endl;
+		std::cout << this->name << " already fainted and can't be repaired." << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->name << " repairs itself recovering "
+	std::cout << this->name << " repairs itself recovering "
 		<< amount << " hit points." << std::endl;
 	this->energyPoints--;
 	this->hitPoints += amount;

@@ -1,25 +1,27 @@
-#include "ClapTrap.hpp"
+
+#include "ScavTrap.hpp"
 
 int main (void)
 {
-	ClapTrap clapTrap;
-	ClapTrap clapTrap2("ClapTrap2");
-	ClapTrap clapTrap3(clapTrap2);
+	ScavTrap scav("GoodScav");
+	ScavTrap scav2("EvilScav");
+	ScavTrap scav3;
 
-	clapTrap.attack("target");
-	clapTrap.takeDamage(5);
-	clapTrap.beRepaired(5);
 
-	clapTrap2.attack("target");
-	clapTrap2.takeDamage(5);
-	clapTrap2.beRepaired(5);
+	scav = scav2;
+	scav3 = scav;
+	scav.attack("target");
+	scav2.attack("target2");
+	scav3.attack("target3");
 
-	clapTrap3.attack("target");
-	clapTrap3.takeDamage(5);
-	clapTrap3.beRepaired(5);
+	scav.takeDamage(5);
 
-	clapTrap2.takeDamage(100);
-	clapTrap2.takeDamage(100);
+	scav.beRepaired(5);
+
+	scav.attack("target");
+	scav.attack("target2");
+	scav.guardGate();
+
 
 	return (0);
 }
