@@ -5,7 +5,7 @@ ClapTrap::ClapTrap() {
 	this->name = "Default";
 	this->hitPoints = 10;
 	this->energyPoints = 10;
-	this->atackDamage = 0;
+	this->attackdamage = 0;
 }
 
 ClapTrap::ClapTrap(std::string name) {
@@ -13,7 +13,7 @@ ClapTrap::ClapTrap(std::string name) {
 	this->name = name;
 	this->hitPoints = 10;
 	this->energyPoints = 10;
-	this->atackDamage = 0;
+	this->attackdamage = 0;
 }
 
 ClapTrap::~ClapTrap() {
@@ -30,7 +30,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& copy) {
 	this->name = copy.name;
 	this->hitPoints = copy.hitPoints;
 	this->energyPoints = copy.energyPoints;
-	this->atackDamage = copy.atackDamage;
+	this->attackdamage = copy.attackdamage;
 	return (*this);
 }
 
@@ -44,7 +44,7 @@ void ClapTrap::attack(const std::string& target) {
 		return ;
 	}
 	std::cout << "ClapTrap " << this->name << " attacks " << target << " causing it to lose "
-		<< this->atackDamage << " hit points." << std::endl;
+		<< this->attackdamage << " hit points." << std::endl;
 	this->energyPoints--;
 }
 
