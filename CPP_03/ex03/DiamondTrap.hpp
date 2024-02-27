@@ -14,5 +14,4 @@ public:
 	DiamondTrap(const DiamondTrap& copy);
 
 	void whoAmI();
-	void getStats();
 };
