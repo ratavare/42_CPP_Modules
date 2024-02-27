@@ -1,8 +1,5 @@
 #include "Zombie.hpp"
 
-Zombie* newZombie( std::string name );
-void	randomChump( std::string name );
-
 int main() 
 {
 	Zombie um("ernesto");
@@ -10,6 +7,7 @@ int main()
 
 	Zombie* dois;
 	dois = newZombie("joao");
+	dois->announce();
 	delete dois;
 
 	randomChump("tereso");
