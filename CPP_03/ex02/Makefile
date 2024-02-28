@@ -1,6 +1,6 @@
 NAME	=	FragTrap
 
-CC		=	c++
+CPP		=	c++
 
 SRCS	=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
@@ -13,10 +13,10 @@ RM		=	rm -rf
 all	:		$(NAME)
 
 $(NAME) :	$(OBJS)
-			@$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+			@$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp
-			@$(CC) $(CPPFLAGS) -c -o $@ $<
+			@$(CPP) $(CPPFLAGS) -c -o $@ $<
 
 clean:			
 			@$(RM) $(OBJS)
