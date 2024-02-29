@@ -9,7 +9,7 @@ protected:
 public:
 	Animal();
 	Animal(const Animal& copy);
-	~Animal();
+	virtual ~Animal();
 	Animal& operator=(const Animal& copy);
 	
 	std::string getType() const;
