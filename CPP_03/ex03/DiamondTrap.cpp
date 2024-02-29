@@ -2,10 +2,12 @@
 
 DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap() {
 	std::cout << "DiamondTrap default constructor called" << std::endl;
+	ScavTrap::energyPoints = 50;
 }
 
 DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name) {
 	this->name = name;
+	ScavTrap::energyPoints = 50;
 	ClapTrap::name = name + "_clap_name";
 }
 
