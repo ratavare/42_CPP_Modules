@@ -20,5 +20,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	
 	if (pabArea + pacArea + pbcArea != abcArea)
 		return (false);
+	if (pabArea == 0 || pacArea == 0 || pbcArea == 0)
+		return (false);
 	return (true);
 }
