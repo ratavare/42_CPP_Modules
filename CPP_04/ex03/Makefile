@@ -1,30 +1,44 @@
-NAME	=	AMateria
+NAME      = AMateria
 
-CPP		=	c++
+OBJ_DIR   = objs
 
-SRCS	=	main.cpp
+CPP       = c++
 
-OBJS	=	$(SRCS:.cpp=.o)
+SRC_DIR   = srcs
 
-CPPFLAGS=	-Wall -Werror -Wextra -std=c++98 -I./
+INC_DIR   = includes
 
-RM		=	rm -rf
+SRCS      = $(SRC_DIR)/main.cpp \
+            $(SRC_DIR)/AMateria.cpp \
+            $(SRC_DIR)/Character.cpp \
+            $(SRC_DIR)/Cure.cpp \
+            $(SRC_DIR)/Ice.cpp \
+            $(SRC_DIR)/MateriaSource.cpp
 
-all	:		$(NAME)
+OBJS      = $(addprefix $(OBJ_DIR)/,$(notdir $(SRCS:.cpp=.o)))
 
-$(NAME) :	$(OBJS)
-			@$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
+CPPFLAGS  = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
 
-%.o: %.cpp
-			@$(CPP) $(CPPFLAGS) -c -o $@ $<
+RM        = rm -rf
 
-clean:			
-			@$(RM) $(OBJS)
+all : $(NAME)
 
-fclean:		clean
-			@$(RM) $(NAME)
+$(NAME) : $(OBJ_DIR) $(OBJS)
+	@$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
-re:			fclean $(NAME)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@$(CPP) $(CPPFLAGS) -c -o $@ $<
 
-r:			re
-			@valgrind ./$(NAME)
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+clean:
+	@$(RM) $(OBJ_DIR)
+
+fclean: clean
+	@$(RM) $(NAME)
+
+re: fclean all
+
+r: re
+	@valgrind ./$(NAME)
