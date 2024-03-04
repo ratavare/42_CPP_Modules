@@ -8,7 +8,9 @@ class Character : public ICharacter
 {
 private:
 	std::string name;
+	int	droppedIndex;
 	AMateria* inventory[4];
+	AMateria*  dropped[10];
 
 public:
 	Character();
