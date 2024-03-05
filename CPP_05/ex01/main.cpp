@@ -14,7 +14,6 @@ int main()
 		std::cout << joao2 << std::endl;
 
 		// Grade too low exception.
-
 		antonio.decrementGrade();
 		std::cout << antonio << std::endl;
 
