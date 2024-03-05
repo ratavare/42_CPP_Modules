@@ -30,12 +30,16 @@ Dog bobi;
 bobi.setIdea("Sou um dog com 30 anos\n");
 std::cout << bobi.getIdea(0);
 bobi.setIdea("Nao curto desses gatos\n");
-std::cout << bobi.getIdea(1);
+std::cout << bobi.getIdea(1);	
 std::cout << bobi.getIdea(2); // no idea.
 
 Dog fakeBobi(bobi);
 std::cout << fakeBobi.getType() << std::endl;
 std::cout << fakeBobi.getIdea(0);
 std::cout << fakeBobi.getIdea(1);
-return 0;
+
+std::cout << std::endl << "==================================" << std::endl << std::endl;
+
+Dog basic;
+Dog tmp = basic;
 }
