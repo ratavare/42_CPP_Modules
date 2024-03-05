@@ -17,11 +17,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& copy) {
 Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy) {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &copy) {
-		const_cast<std::string&>(this->name) = copy.name;
+	if (this != &copy)
 		this->grade = copy.grade;
-	}
 	return (*this);
 }
 
