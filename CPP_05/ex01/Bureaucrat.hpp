@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -14,6 +17,8 @@ public:
 	Bureaucrat(const Bureaucrat& copy);
 	~Bureaucrat();
 	Bureaucrat& operator=(const Bureaucrat& copy);
+
+	void signForm(Form& form);
 
 	std::string getName(void) const;
 	int getGrade(void) const;

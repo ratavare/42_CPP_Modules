@@ -25,6 +25,19 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy) {
 	return (*this);
 }
 
+void Bureaucrat::signForm(Form& form) {
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->name << " signed form: " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->name << " couldn't sign form: " << form.getName()
+			<< ", exception: " << e.what() << std::endl;
+	}
+}
+
 std::string Bureaucrat::getName(void) const {return (this->name);}
 
 int Bureaucrat::getGrade(void) const {return (this->grade);}

@@ -4,24 +4,26 @@ int main()
 {
 	try
 	{
+		// Form signing
+
 		Bureaucrat joao("joao", 10);
-		std::cout << joao << std::endl;
-		Bureaucrat antonio("antonio", 150);
-		std::cout << antonio << std::endl;
-		joao.incrementGrade();
-		std::cout << joao << std::endl;
-		Bureaucrat joao2(joao);
-		std::cout << joao2 << std::endl;
+		Form form1("Toddlers kidnapping permission", 15, 1);
+		std::cout << form1;
+		joao.signForm(form1);
+		std::cout << form1;
 
-		// Grade too low exception.
-		antonio.decrementGrade();
-		std::cout << antonio << std::endl;
+		// Copy constructor and signing exception
 
-		// Grade too high exception.
-		for (int i = 9; i > -5; i--) {
-			joao.incrementGrade();
-			std::cout << joao << std::endl;
-		}
+		Bureaucrat cloneJoao(joao);
+		Form form2(form1);
+		for (int i = 0; i < 10; i++)
+			cloneJoao.decrementGrade();
+		cloneJoao.signForm(form2);
+
+		// Signing an already signed form
+
+		Bureaucrat antonio("antonio", 1);
+		antonio.signForm(form1);
 	}
 	catch (std::exception & e)
 	{
