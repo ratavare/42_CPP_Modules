@@ -9,7 +9,7 @@ int main()
 	try
 	{
 		Intern johnny;
-		AForm* doc1 = johnny.makeForm("RobotomyForm", "Malandro");
+		AForm* doc1 = johnny.makeForm("RobotomyRequestForm", "Malandro");
 		Bureaucrat tim("Tim", 1);
 		std::cout << tim << std::endl;
 		tim.signForm(*doc1);

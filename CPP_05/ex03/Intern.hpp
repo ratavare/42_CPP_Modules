@@ -9,6 +9,7 @@ class Intern
 {
 private:
     std::string formNames[3];
+	AForm *(*function[])(const std::string target);
 public:
 	Intern();
 	Intern(const Intern& copy);

@@ -1,8 +1,8 @@
 #include "Intern.hpp"
 
 Intern::Intern() {
-	formNames[0] = "ShrubberyForm";
-	formNames[1] = "RobotomyForm";
+	formNames[0] = "ShrubberyCreationForm";
+	formNames[1] = "RobotomyRequestForm";
 	formNames[2] = "PresidentialPardonForm";
 }
 
@@ -32,24 +32,31 @@ AForm* createShrubberyCreationForm(std::string target) {
         return new ShrubberyCreationForm(target);
     }
 
-AForm* Intern::makeForm(std::string name, std::string target) {
-	int i = 0;
+static AForm *makePresident(const std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
 
-	while (i < 3) {
-		if (name == this->formNames[i])	
-			break ;
-		i++;
+static AForm *makeRobot(const std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm *makeShrubbery(const std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+
+AForm* Intern::makeForm(std::string name, std::string target) {
+	AForm *(*function[])(const std::string target) = {&makePresident, &makeRobot, &makeShrubbery};
+
+	for (int i = 0; i < 3; i++) {
+		if (name == this->formNames[i])	{
+			std::cout << "Intern creates: " << this->formNames[i] << std::endl;
+			return ((*function[i])(target));
+		}
 	}
-	switch (i)
-	{
-		case 0:
-			return (new ShrubberyCreationForm(target));
-		case 1:
-			return (new RobotomyRequestForm(target));
-		case 2:
-			return (new PresidentialPardonForm(target));
-		default:
-			std::cout << "Intern wasn't able to make form, exception: ";
-			throw Intern::InexistentForm();
-	}
+	std::cout << "Intern couldn't create form, exception: ";
+	throw Intern::InexistentForm();
 }
