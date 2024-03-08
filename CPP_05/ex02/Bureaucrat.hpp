@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -18,7 +18,7 @@ public:
 	~Bureaucrat();
 	Bureaucrat& operator=(const Bureaucrat& copy);
 
-	void signForm(Form& form);
+	void signForm(AForm& form);
 	void executeForm(AForm const & form);
 
 	std::string getName(void) const;

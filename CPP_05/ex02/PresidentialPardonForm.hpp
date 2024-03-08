@@ -13,4 +13,6 @@ public:
 	~PresidentialPardonForm();
 	PresidentialPardonForm(const PresidentialPardonForm& copy);
 	PresidentialPardonForm& operator=(const PresidentialPardonForm& copy);
+
+	void execute(Bureaucrat const & executor);
 };

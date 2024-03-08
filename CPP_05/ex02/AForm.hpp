@@ -27,6 +27,7 @@ public:
 	int getExecuteGrade(void) const;
 	bool getIsSigned(void) const;
 
+	void canBeExecuted(Bureaucrat const & executor) const;
 	virtual void execute(Bureaucrat const & executor) = 0;
 
 	class GradeTooHighException : public std::exception
@@ -48,6 +49,13 @@ public:
 		public:
 			const char* what() const throw() {
 				return "Form is already signed";
+			}
+	};
+	class AFormIsNotSigned : public std::exception
+	{
+		public:
+			const char* what() const throw() {
+				return "Form hasn't been signed";
 			}
 	};
 };

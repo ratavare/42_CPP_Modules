@@ -17,4 +17,10 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	if (this != &copy) {
 		const_cast<std::string&>(this->target) = copy.target;
 	}
+	return (*this);
+}
+
+void PresidentialPardonForm::execute(Bureaucrat const & executor) {
+	this->canBeExecuted(executor);
+	std::cout << "Informs that " << this->target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

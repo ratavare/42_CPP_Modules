@@ -42,6 +42,13 @@ int AForm::getExecuteGrade(void) const {return this->executeGrade;}
 
 bool AForm::getIsSigned(void) const {return this->isSigned;}
 
+void AForm::canBeExecuted(const Bureaucrat & executor) const {
+	if (this->isSigned == false)
+		throw AForm::AFormIsNotSigned();
+	if (executor.getGrade() > this->executeGrade)
+		throw AForm::GradeTooLowException();
+}
+
 std::ostream& operator<<(std::ostream& os, const AForm& obj) {
 	os << "Form: " << obj.getName() << std::endl 
 		<< "Signed status: " << obj.getIsSigned() << std::endl

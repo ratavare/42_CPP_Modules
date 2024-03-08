@@ -1,29 +1,44 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
 	try
 	{
-		// Form signing
+		// PresidentialPardonForm
 
-		Bureaucrat joao("joao", 10);
-		Form form1("Toddlers kidnapping permission", 15, 1);
-		std::cout << form1;
-		joao.signForm(form1);
-		std::cout << form1;
+		// PresidentialPardonForm doc1("Malandro");
+        Bureaucrat tim("Tim", 1);
+        // tim.signForm(doc1);
+        // tim.executeForm(doc1);
+		// // PresidentialPardonForm doc2(doc1);
+		// // tim.signForm(doc2);
+		// PresidentialPardonForm doc3("Joao");
+		// std::cout << doc3;
+		// Bureaucrat pedro("Pedro", 135);
+		// // pedro.signForm(doc3);
+		// tim.executeForm(doc3);
 
-		// Copy constructor and signing exception
+		// ShrubberyCreationForm
 
-		Bureaucrat cloneJoao(joao);
-		Form form2(form1);
-		for (int i = 0; i < 10; i++)
-			cloneJoao.decrementGrade();
-		cloneJoao.signForm(form2);
+		// ShrubberyCreationForm doc4("tree");
+		// Bureaucrat christian("Christian", 136);
+		// christian.signForm(doc4);
+		// christian.executeForm(doc4);
+		// ShrubberyCreationForm doc5("tree2");
+		// Bureaucrat manel("Manel", 138);
+		// manel.signForm(doc5);
+		// manel.executeForm(doc5);
 
-		// Signing an already signed form
+		// RobotomyRequestForm
 
-		Bureaucrat antonio("antonio", 1);
-		antonio.signForm(form1);
+		// RobotomyRequestForm doc5("Malandro");
+		// Bureaucrat alexander("Alexander", 140);
+		// alexander.signForm(doc5);
+		// alexander.executeForm(doc5);
+
 	}
 	catch (std::exception & e)
 	{
