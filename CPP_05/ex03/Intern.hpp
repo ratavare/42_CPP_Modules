@@ -8,7 +8,7 @@
 class Intern
 {
 private:
-	std::string formNames[3];
+    std::string formNames[3];
 public:
 	Intern();
 	Intern(const Intern& copy);

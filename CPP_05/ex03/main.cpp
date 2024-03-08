@@ -14,6 +14,7 @@ int main()
 		std::cout << tim << std::endl;
 		tim.signForm(*doc1);
 		tim.executeForm(*doc1);
+		
 	}
 	catch (std::exception & e)
 	{

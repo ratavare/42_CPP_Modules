@@ -10,7 +10,7 @@ int main()
 		// PresidentialPardonForm
 
 		// PresidentialPardonForm doc1("Malandro");
-        Bureaucrat tim("Tim", 1);
+        // Bureaucrat tim("Tim", 1);
         // tim.signForm(doc1);
         // tim.executeForm(doc1);
 		// // PresidentialPardonForm doc2(doc1);
@@ -25,6 +25,7 @@ int main()
 
 		// ShrubberyCreationForm doc4("tree");
 		// Bureaucrat christian("Christian", 136);
+		// std::cout << doc4;
 		// christian.signForm(doc4);
 		// christian.executeForm(doc4);
 		// ShrubberyCreationForm doc5("tree2");
