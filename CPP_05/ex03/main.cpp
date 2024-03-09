@@ -6,10 +6,11 @@
 
 int main()
 {
+	AForm* doc1;
 	try
 	{
 		Intern johnny;
-		AForm* doc1 = johnny.makeForm("RobotomyRequestForm", "Malandro");
+		doc1 = johnny.makeForm("RobotomyRequestForm", "Malandro");
 		Bureaucrat tim("Tim", 1);
 		std::cout << tim << std::endl;
 		tim.signForm(*doc1);
@@ -20,4 +21,6 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
+	if (doc1)
+		delete doc1;
 }

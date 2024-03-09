@@ -47,9 +47,8 @@ static AForm *makeShrubbery(const std::string target)
 	return (new ShrubberyCreationForm(target));
 }
 
-
 AForm* Intern::makeForm(std::string name, std::string target) {
-	AForm *(*function[])(const std::string target) = {&makePresident, &makeRobot, &makeShrubbery};
+	AForm *(*function[])(const std::string target) = {&makeShrubbery, &makeRobot, &makePresident};
 
 	for (int i = 0; i < 3; i++) {
 		if (name == this->formNames[i])	{
