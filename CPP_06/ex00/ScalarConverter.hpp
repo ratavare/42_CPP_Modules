@@ -4,6 +4,18 @@
 #include <stdexcept>
 #include <cmath>
 #include <climits>
+#include <cfloat>
+#include <iomanip>
+
+enum e_type
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	INVALID,
+	PSEUDOLITERAL
+};
 
 class ScalarConverter
 {
@@ -14,19 +26,5 @@ private:
 	~ScalarConverter();
 public:
 	static void converter(std::string str);
-
-	class ImpossibleException : public std::exception
-	{
-	public:
-		const char* what() const throw() {
-			return "Impossible";
-		}
-	};
-	class NonPrintableException : public std::exception
-	{
-	public:
-		const char* what() const throw() {
-			return "Non displayable";
-		}
-	};
 };
+
