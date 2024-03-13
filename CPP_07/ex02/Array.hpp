@@ -15,7 +15,10 @@ public:
 	Array(unsigned int n) : size(n), elements(new T[n]) {}
 
 	Array(const Array& copy) {
-		*this = copy;
+		elements = new T[copy.getSize()];
+		size = copy.getSize();
+		for (unsigned int i = 0; i < copy.getSize(); i++)
+			elements[i] = copy.elements[i];
 	}
 
 	~Array() {
