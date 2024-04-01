@@ -2,7 +2,7 @@ NAME	=	Span
 
 CPP		=	c++
 
-SRCS	=	main.cpp
+SRCS	=	main.cpp Span.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 

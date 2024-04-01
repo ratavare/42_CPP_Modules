@@ -16,11 +16,13 @@ public:
 	Span(unsigned int N);
 	Span(const Span& copy);
 	Span& operator=(const Span& copy);
+	int operator[](unsigned int i);
 	~Span();
 
 	void addNumber(int number);
 	int shortestSpan();
 	int longestSpan();
+	void spanFill(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 	class SpanFullException : public std::exception
 	{
