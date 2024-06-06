@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 #include <cstring>
@@ -12,14 +13,17 @@
 class BitcoinExchange
 {
 private:
-	std::map<std::string, int> data;
-	std::queue<std::pair<std::string, int> > input;
+	std::map<std::string, float> data;
+	std::queue<std::pair<std::string, double> > input;
+
+	bool validateInputLine(std::string line);
+	void printValue(std::string line);
 
 public:
 	BitcoinExchange() {};
 	~BitcoinExchange() {};
 	void parseData(const std::string path);
-	void parseInput();
+	void processInput(std::string argv);
 
 	class Error : public std::exception
 	{

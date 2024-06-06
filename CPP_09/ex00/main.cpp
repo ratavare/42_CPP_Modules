@@ -1,4 +1,4 @@
-#include "BitcoinExchange.cpp"
+#include "BitcoinExchange.hpp"
 
 int main(int argc, char** argv)
 {
@@ -8,9 +8,10 @@ int main(int argc, char** argv)
 			throw BitcoinExchange::Error("Invalid argument number.");
 		BitcoinExchange bitEx;
 		bitEx.parseData("data.csv");
+		bitEx.processInput(std::string(argv[1]));
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "ERROR: " << e.what() << std::endl;
+		std::cerr << "ERROR: " << e.what() << std::endl;
 	}
 }
