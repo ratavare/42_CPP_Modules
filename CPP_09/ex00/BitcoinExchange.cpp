@@ -60,8 +60,6 @@ bool BitcoinExchange::validateDate(std::string* strs) {
 }
 
 bool BitcoinExchange::validateInputLine(std::string line) {
-	if (line == "date | value")
-		return false;
 	size_t fs = line.find_first_of(' ');
 	size_t ls = line.find_last_of(' ');
 	if (fs == std::string::npos || ls == std::string::npos)
@@ -126,6 +124,9 @@ void BitcoinExchange::processInput(std::string argv) {
 	if (!file)
 		throw Error("Input file does not exist or is unreachable.");
 	std::string line;
+	std::getline(file, line);
+	if (line != "date | value")
+		throw Error("Missing data types identifier.");
 	while (std::getline(file, line)) {
 		if (validateInputLine(line)) {
 			printValue(line);
