@@ -16,7 +16,10 @@ private:
 	std::map<std::string, float> data;
 	std::queue<std::pair<std::string, double> > input;
 
+	std::string* splitDate(std::string line);
 	bool validateInputLine(std::string line);
+	bool validateDate(std::string* strs);
+	std::string decreaseDate(std::string line);
 	void printValue(std::string line);
 
 public:
