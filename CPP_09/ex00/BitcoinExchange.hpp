@@ -8,34 +8,27 @@
 #include <string>
 #include <algorithm>
 #include <map>
-#include <queue>
-
-/* 
-2011-01--03 | 3    // count '-'
-2011-01-03 3
-	2011-01-03 | 3
-2011-01-03 | 3		$
-2011-01-03 | 3 1   //reads last one
-2011-01-03 | 3-1-5
-2011-01-03 |||| 3  // count '|'
-2011-01-03 | 3.0.00000000000000000000000
-*/
 
 class BitcoinExchange
 {
 private:
 	std::map<std::string, float> data;
-	std::queue<std::pair<std::string, double> > input;
+
+	BitcoinExchange(const BitcoinExchange& copy) {(void)copy;}
+	BitcoinExchange& operator=(const BitcoinExchange& copy) {return (void)copy, *this;}
 
 	std::string* splitDate(std::string line);
+	int countChar(std::string line, int c);
+	bool isSingleNumber(std::string line);
+	std::string trimWhiteSpaces(std::string line);
 	bool validateInputLine(std::string line);
 	bool validateDate(std::string* strs);
 	std::string decreaseDate(std::string line);
 	void printValue(std::string line);
 
 public:
-	BitcoinExchange() {};
-	~BitcoinExchange() {};
+	BitcoinExchange() {}
+	~BitcoinExchange() {}
 	void parseData(const std::string path);
 	void processInput(std::string argv);
 

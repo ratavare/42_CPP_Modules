@@ -14,6 +14,30 @@ void BitcoinExchange::parseData(const std::string path) {
 	file.close();
 }
 
+bool BitcoinExchange::isSingleNumber(std::string line) {
+	int count = 0;
+	for (std::string::iterator it = line.begin(); it != line.end(); it++)
+		if (!std::isdigit(*it) && *it != '.')
+			count++;
+	if (count > 0)
+		return false;
+	return true;
+}
+
+int BitcoinExchange::countChar(std::string line, int c) {
+	int count = 0;
+	for (std::string::iterator it = line.begin(); it != line.end(); it++)
+		if (*it == c)
+			count++;
+	return count;
+}
+
+std::string BitcoinExchange::trimWhiteSpaces(std::string line) {
+	size_t begin = line.find_first_not_of(" \f\n\r\t\v");
+	size_t end = line.find_last_not_of(" \f\n\r\t\v");
+	return line.substr(begin, end + 1);
+}
+
 std::string* BitcoinExchange::splitDate(std::string line) {
 	size_t pos = line.find('-');
 	std::string* strs = new std::string[3];
@@ -35,6 +59,8 @@ bool BitcoinExchange::validateDate(std::string* strs) {
 	int vals[3];
 	for (int i= 0; i < 3; i++)
 		vals[i] = std::atoi(strs[i].c_str());
+	if (vals[0] == 2009 && vals[1] == 1 && vals[2] == 1)
+		return delete[] strs, false;
 	if (strs[0].size() != 4 || vals[0] < 2009 || vals[0] > 2022)
 		return delete[] strs, false;
 	if (vals[1] < 1 || vals[1] > 12)
@@ -60,6 +86,10 @@ bool BitcoinExchange::validateDate(std::string* strs) {
 }
 
 bool BitcoinExchange::validateInputLine(std::string line) {
+	if (countChar(line, '-') != 2 || countChar(line, '|') != 1 || countChar(line, '.') > 1)
+		return std::cerr << "Bad input: " << line << std::endl, false;
+	if (!isSingleNumber(trimWhiteSpaces(line.substr(line.find('|') + 1))))
+		return std::cerr << "Too many values: " << line << std::endl, false;
 	size_t fs = line.find_first_of(' ');
 	size_t ls = line.find_last_of(' ');
 	if (fs == std::string::npos || ls == std::string::npos)
@@ -128,9 +158,9 @@ void BitcoinExchange::processInput(std::string argv) {
 	if (line != "date | value")
 		throw Error("Missing data types identifier.");
 	while (std::getline(file, line)) {
-		if (validateInputLine(line)) {
+		line = trimWhiteSpaces(line);
+		if (validateInputLine(line))
 			printValue(line);
-		}
 	}
 	file.close();
 }
