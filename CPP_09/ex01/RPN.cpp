@@ -1,6 +1,9 @@
 #include "RPN.hpp"
 
-RPN::RPN(char* argv) : input(std::string(argv)) {}
+RPN::RPN(char* argv) : input(std::string(argv)) {
+	if (this->input.empty())
+		throw Error("Empty input. :(");
+}
 
 bool RPN::isOperator(int c) {
 	return (c == '/' || c == '*' || c == '+' || c == '-');
