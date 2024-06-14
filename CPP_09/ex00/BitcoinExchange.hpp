@@ -12,7 +12,7 @@
 class BitcoinExchange
 {
 private:
-	std::map<std::string, float> data;
+	std::map<std::string, double> data;
 
 	BitcoinExchange(const BitcoinExchange& copy) {(void)copy;}
 	BitcoinExchange& operator=(const BitcoinExchange& copy) {return (void)copy, *this;}
