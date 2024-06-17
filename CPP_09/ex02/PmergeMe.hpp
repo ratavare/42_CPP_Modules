@@ -12,14 +12,18 @@
 class PmergeMe
 {
 private:
+	std::vector<int> jacobsthal;
 	std::vector<int> vec;
 	std::deque<int> deq;
 
-	void populateContainers(char **argv);
-	
+	void	populateContainers(char **argv);
+	void	jacobsthalIndexSequenceGen(int limit);
+
 public:
 	PmergeMe(char **argv);
 	~PmergeMe();
+
+	void sort();
 
 	class Error : public std::exception
 	{
