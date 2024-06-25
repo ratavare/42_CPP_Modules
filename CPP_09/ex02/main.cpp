@@ -6,7 +6,7 @@ int main(int argc, char** argv) {
 		if (argc < 2)
 			throw PmergeMe::Error("Invalid argument number.");
 		PmergeMe  containers(argv);
-		containers.sort();
+		containers.sortVec();
 	}
 	catch (const std::exception& e)
 	{

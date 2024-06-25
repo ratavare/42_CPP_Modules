@@ -1,6 +1,6 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(char** argv) {populateContainers(argv);}
+PmergeMe::PmergeMe(char** argv) : strangler(false) {populateContainers(argv);}
 
 PmergeMe::~PmergeMe() {}
 
@@ -27,7 +27,7 @@ void PmergeMe::jacobsthalIndexSequenceGen(int limit) {
 
 /*
 	Parses and populates the private vector and deque variables
-	with the programs input.
+	with the program's input.
 */
 
 void PmergeMe::populateContainers(char **argv) {
@@ -46,6 +46,28 @@ void PmergeMe::populateContainers(char **argv) {
 	}
 }
 
-void PmergeMe::sort() {
-
+std::vector<std::pair<int, int> > PmergeMe::makePairsV() {
+	std::vector<std::pair<int, int> > pairs;
+	
+	for (size_t i = 0; i + 1 < vec.size(); i += 2) {
+		pairs.push_back(std::make_pair(vec[i], vec[i + 1]));
+	}
+	if (vec.size() % 2) {
+		strangler = true;
+		stranglerVal = vec.back();
+	}
+	return pairs;
 }
+
+void PmergeMe::sortVec() {
+	std::vector<std::pair<int, int> > pairs = makePairsV();
+
+
+
+	// // For testing purposes.
+	// for (size_t i = 0; i < pairs.size(); i++)
+	// 	std::cout << pairs[i].first << " " << pairs[i].second << std::endl;
+	// if (strangler)
+	// 	std::cout << "strangler: " << stranglerVal << std::endl;
+}
+
