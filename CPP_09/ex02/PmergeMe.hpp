@@ -19,8 +19,11 @@ private:
 	bool				strangler;
 	int 				stranglerVal;
 
+	static void	swap(int& x, int& y);
 	void	populateContainers(char **argv);
 	void	jacobsthalIndexSequenceGen(int limit);
+
+	void sortMainChain(std::vector<int>& mainChain, int i);
 	std::vector<std::pair<int, int> > makePairsV();
 	void	makePairsDQ();
 

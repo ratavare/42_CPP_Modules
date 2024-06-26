@@ -4,6 +4,15 @@ PmergeMe::PmergeMe(char** argv) : strangler(false) {populateContainers(argv);}
 
 PmergeMe::~PmergeMe() {}
 
+/*
+	Swaps the two values.
+*/
+
+void PmergeMe::swap(int& x, int& y) {
+	x = x ^ y;
+	y = x ^ y;
+	x =  x ^ y;
+}
 
 /*
 	Populates private vector 'jacobsthal' with the jacobsthal sequece
@@ -59,15 +68,33 @@ std::vector<std::pair<int, int> > PmergeMe::makePairsV() {
 	return pairs;
 }
 
-void PmergeMe::sortVec() {
-	std::vector<std::pair<int, int> > pairs = makePairsV();
-
-
-
-	// // For testing purposes.
-	// for (size_t i = 0; i < pairs.size(); i++)
-	// 	std::cout << pairs[i].first << " " << pairs[i].second << std::endl;
-	// if (strangler)
-	// 	std::cout << "strangler: " << stranglerVal << std::endl;
+void PmergeMe::sortMainChain(std::vector<int>& mainChain, int i) {
+	if (i <= 0)
+		return ;
+	sortMainChain(mainChain, i - 1);
+	for (;i > 0 && mainChain[i] < mainChain[i - 1]; i--)
+		PmergeMe::swap(mainChain[i], mainChain[i - 1]);
 }
 
+void PmergeMe::sortVec() {
+	std::vector<std::pair<int, int> > pairs = makePairsV();
+	for (size_t i = 0; i != pairs.size(); i++)
+		if (pairs[i].first < pairs[i].second)
+			PmergeMe::swap(pairs[i].first, pairs[i].second);
+
+	std::vector<int> mainChain;
+	for (size_t i = 0; i < pairs.size(); i++)
+		mainChain.push_back(pairs[i].first);
+	sortMainChain(mainChain, mainChain.size() - 1);
+
+
+	/* For testing purposes. */
+	std::cout << "----Pairs----" << std::endl;
+	for (size_t i = 0; i < pairs.size(); i++)
+		std::cout << pairs[i].first << " " << pairs[i].second << std::endl;
+	if (strangler)
+		std::cout << "strangler: " << stranglerVal << std::endl;
+	std::cout << "----MainChain----" << std::endl;
+	for (size_t i = 0; i < mainChain.size(); i++)
+	std::cout << mainChain[i] << std::endl;
+}
