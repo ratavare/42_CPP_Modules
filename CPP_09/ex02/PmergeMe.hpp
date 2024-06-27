@@ -22,9 +22,10 @@ private:
 	void				populateContainers(char **argv);
 	std::vector<int>	jacobsthalIndexSequenceGen(int limit);
 
-	void 				recursiveSort(std::vector<int>& sequence, int i);
-	void				makePairsDQ();
-	std::vector<std::pair<int, int> > makePairsV();
+	void recursiveSort(std::vector<int>& sequence, int i);
+	void recursiveSort(std::deque<int>& sequence, int i);
+	std::deque<std::pair<int, int> >	makePairsDQ();
+	std::vector<std::pair<int, int> >	makePairsV();
 
 public:
 	PmergeMe(char **argv);

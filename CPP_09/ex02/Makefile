@@ -2,7 +2,7 @@ NAME	=	PmergeMe
 
 CPP		=	c++
 
-SRCS	=	main.cpp PmergeMe.cpp
+SRCS	=	main.cpp PmergeMe.cpp vector.cpp deque.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 
