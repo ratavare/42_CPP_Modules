@@ -79,3 +79,25 @@ void PmergeMe::recursiveSort(std::deque<int>& sequence, int i) {
 	for (;i > 0 && sequence[i] < sequence[i - 1]; i--)
 		PmergeMe::swap(sequence[i], sequence[i - 1]);
 }
+
+/*
+	Prints containers content.
+*/
+
+void PmergeMe::printVector(std::vector<int> container) {
+    for (std::vector<int>::iterator it = container.begin(); it != container.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
+void PmergeMe::printDeque(std::deque<int> container) {
+    for (std::deque<int>::iterator it = container.begin(); it != container.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
+std::vector<int> PmergeMe::getVec() {return vec;}
+
+std::deque<int> PmergeMe::getDeq() {return deq;}

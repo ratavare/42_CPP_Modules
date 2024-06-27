@@ -9,6 +9,8 @@
 #include <cerrno>
 #include <climits>
 #include <utility>
+#include <ctime>
+#include <sys/time.h>
 
 class PmergeMe
 {
@@ -33,6 +35,11 @@ public:
 
 	void sortDeq();
 	void sortVec();
+	std::vector<int> getVec();
+	std::deque<int> getDeq();
+
+	static void printVector(std::vector<int> container);
+	static void printDeque(std::deque<int> container);
 
 	class Error : public std::exception
 	{
