@@ -41,6 +41,8 @@ public:
 	static void printVector(std::vector<int> container);
 	static void printDeque(std::deque<int> container);
 
+	void PmergeMe::resetStrangler();
+
 	class Error : public std::exception
 	{
 	private:

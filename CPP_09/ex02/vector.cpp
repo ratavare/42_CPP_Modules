@@ -1,5 +1,11 @@
 #include "PmergeMe.hpp"
 
+/*
+	Creates pairs from all the values in private varialble 'vec' allocating them
+	in a vector of pairs. If number of elements is odd, defines private variable strangler
+	as true and defines stranglerVal as the value of the leftover element.
+*/
+
 std::vector<std::pair<int, int> > PmergeMe::makePairsV() {
 	std::vector<std::pair<int, int> > pairs;
 	
@@ -12,6 +18,12 @@ std::vector<std::pair<int, int> > PmergeMe::makePairsV() {
 	}
 	return pairs;
 }
+
+/*
+	Uses Ford Johnson Merge Insertion Sort algorithm to sort the elements present
+	in 'vec'. Allocates these into local container 'mainChain' and later swaps 'vec'
+	for this same container.
+*/
 
 void PmergeMe::sortVec() {
 	std::vector<std::pair<int, int> > pairs = makePairsV();

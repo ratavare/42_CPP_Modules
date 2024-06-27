@@ -98,6 +98,15 @@ void PmergeMe::printDeque(std::deque<int> container) {
     std::cout << std::endl;
 }
 
+void PmergeMe::resetStrangler() {
+	strangler = false;
+	stranglerVal = 0;
+}
+
+/*
+	Private variable getters.
+*/
+
 std::vector<int> PmergeMe::getVec() {return vec;}
 
 std::deque<int> PmergeMe::getDeq() {return deq;}

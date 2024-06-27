@@ -20,6 +20,8 @@ int main(int argc, char** argv) {
 		vector_time = static_cast<double>(vector_end - vector_start) * 1000 / CLOCKS_PER_SEC;
 		std::cout << "Time taken: " << vector_time << "ms" << std::endl;
 
+		containers.resetStrangler();
+
 		std::cout << "----Deque----" << std::endl;
 		std::cout << "Before: ";
 		PmergeMe::printDeque(containers.getDeq());
