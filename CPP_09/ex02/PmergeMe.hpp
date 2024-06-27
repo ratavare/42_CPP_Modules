@@ -13,19 +13,18 @@
 class PmergeMe
 {
 private:
-	std::vector<int>	jacobsthal;
 	std::vector<int>	vec;
 	std::deque<int>		deq;
 	bool				strangler;
 	int 				stranglerVal;
 
-	static void	swap(int& x, int& y);
-	void	populateContainers(char **argv);
-	void	jacobsthalIndexSequenceGen(int limit);
+	static void			swap(int& x, int& y);
+	void				populateContainers(char **argv);
+	std::vector<int>	jacobsthalIndexSequenceGen(int limit);
 
-	void sortMainChain(std::vector<int>& mainChain, int i);
+	void 				recursiveSort(std::vector<int>& sequence, int i);
+	void				makePairsDQ();
 	std::vector<std::pair<int, int> > makePairsV();
-	void	makePairsDQ();
 
 public:
 	PmergeMe(char **argv);

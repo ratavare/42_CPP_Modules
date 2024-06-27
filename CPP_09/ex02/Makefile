@@ -6,7 +6,7 @@ SRCS	=	main.cpp PmergeMe.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
 
-CPPFLAGS=	-Wall -Werror -Wextra -std=c++98 -I./
+CPPFLAGS=	-Wall -Werror -Wextra -g -std=c++98 -I./
 
 RM		=	rm -rf
 
