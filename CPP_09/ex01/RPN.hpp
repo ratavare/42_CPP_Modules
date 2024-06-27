@@ -10,9 +10,9 @@
 class RPN
 {
 private:
-	RPN() {}
-	RPN(const RPN& copy) {(void)copy;}
-	RPN& operator=(const RPN& copy) {return (void)copy, *this;}
+	RPN();
+	RPN(const RPN& copy);
+	RPN& operator=(const RPN& copy);
 
 	std::stack<double, std::list<double> > stack;
 	std::string input;
@@ -22,7 +22,7 @@ private:
 
 public:
 	RPN(char* argv);
-	~RPN() {}
+	~RPN();
 	
 	void makeCalculations();
 

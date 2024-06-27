@@ -1,5 +1,16 @@
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange() {}
+
+BitcoinExchange::~BitcoinExchange() {}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy) {(void)copy;}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& copy) {
+	(void)copy;
+	return *this;
+}
+
 void BitcoinExchange::parseData(const std::string path) {
 	std::ifstream file(path.c_str());
 	if (!file)

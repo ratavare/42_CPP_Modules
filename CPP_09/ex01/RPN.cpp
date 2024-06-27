@@ -1,5 +1,16 @@
 #include "RPN.hpp"
 
+RPN::RPN() {}
+
+RPN::~RPN() {}
+
+RPN::RPN(const RPN& copy) {(void)copy;}
+
+RPN& RPN::operator=(const RPN& copy) {
+	(void)copy;
+	return *this;
+}
+
 RPN::RPN(char* argv) : input(std::string(argv)) {
 	if (this->input.empty())
 		throw Error("Empty input. :(");

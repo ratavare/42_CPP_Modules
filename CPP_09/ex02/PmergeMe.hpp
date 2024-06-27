@@ -10,7 +10,6 @@
 #include <climits>
 #include <utility>
 #include <ctime>
-#include <sys/time.h>
 
 class PmergeMe
 {
@@ -29,6 +28,9 @@ private:
 	std::deque<std::pair<int, int> >	makePairsDQ();
 	std::vector<std::pair<int, int> >	makePairsV();
 
+	PmergeMe(const PmergeMe& copy);
+	PmergeMe& operator=(const PmergeMe& copy);
+
 public:
 	PmergeMe(char **argv);
 	~PmergeMe();
@@ -41,7 +43,7 @@ public:
 	static void printVector(std::vector<int> container);
 	static void printDeque(std::deque<int> container);
 
-	void PmergeMe::resetStrangler();
+	void resetStrangler();
 
 	class Error : public std::exception
 	{

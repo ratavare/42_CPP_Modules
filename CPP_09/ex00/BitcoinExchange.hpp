@@ -14,8 +14,8 @@ class BitcoinExchange
 private:
 	std::map<std::string, double> data;
 
-	BitcoinExchange(const BitcoinExchange& copy) {(void)copy;}
-	BitcoinExchange& operator=(const BitcoinExchange& copy) {return (void)copy, *this;}
+	BitcoinExchange(const BitcoinExchange& copy);
+	BitcoinExchange& operator=(const BitcoinExchange& copy);
 
 	std::string* splitDate(std::string line);
 	int countChar(std::string line, int c);
@@ -27,8 +27,8 @@ private:
 	void printValue(std::string line);
 
 public:
-	BitcoinExchange() {}
-	~BitcoinExchange() {}
+	BitcoinExchange();
+	~BitcoinExchange();
 	void parseData(const std::string path);
 	void processInput(std::string argv);
 

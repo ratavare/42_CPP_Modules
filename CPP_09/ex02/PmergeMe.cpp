@@ -4,6 +4,13 @@ PmergeMe::PmergeMe(char** argv) : strangler(false) {populateContainers(argv);}
 
 PmergeMe::~PmergeMe() {}
 
+PmergeMe::PmergeMe(const PmergeMe& copy) {(void)copy;}
+
+PmergeMe& PmergeMe::operator=(const PmergeMe& copy) {
+	(void)copy;
+	return *this;
+}
+
 /*
 	Swaps the two values.
 */
@@ -97,6 +104,10 @@ void PmergeMe::printDeque(std::deque<int> container) {
     }
     std::cout << std::endl;
 }
+
+/*
+	Resets strangler variable.
+*/
 
 void PmergeMe::resetStrangler() {
 	strangler = false;
